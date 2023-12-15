@@ -1,3 +1,7 @@
+.landing {
+  transition: scroll-behavior 1s ease;
+}
+
 section {
   padding-top: 4vh;
   height: 96vh;
@@ -17,6 +21,7 @@ section {
 
 .titles {
   text-align: left;
+  margin-left: 50px;
 }
 
 .titles h1 {
@@ -37,11 +42,10 @@ section {
 /* Section 2 */
 
 .description {
-  width: 500px;
-  height: 150px;
-  margin: 50px;
+  width: 100%;
 }
-.description p {
+.description2 p {
+  margin-top: 20px;
   font-size: 1.8rem;
   margin-bottom: 50px;
 }
