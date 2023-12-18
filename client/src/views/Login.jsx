@@ -24,7 +24,7 @@ export default function Login() {
           <Link className={style.link}>
             <p>Forgot your password?</p>
           </Link>
-          <Link className={style.link}>
+          <Link className={style.link} to="/register">
             <p>Don't have an account yet?</p>
           </Link>
         </div>

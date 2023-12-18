@@ -7,10 +7,11 @@ export default function NavBar() {
       <h1 className={style.logo}>Read Tracker</h1>
       <div className={style.menu}>
         <Link to="/login" className={style.option}>
-          {" "}
           Login
         </Link>
-        <Link className={style.option}> Register</Link>
+        <Link to="/register" className={style.option}>
+          Register
+        </Link>
       </div>
     </nav>
   );
