@@ -6,7 +6,7 @@ module.exports = (sequelize) => {
     {
       id: {
         type: DataTypes.UUID,
-        primarKey: true,
+        primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
       },
 
@@ -19,11 +19,11 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       pagesLeft: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       pages: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
       startDate: {

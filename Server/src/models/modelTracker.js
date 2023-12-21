@@ -4,15 +4,15 @@ module.exports = (sequelize) => {
   sequelize.define("Tracker", {
     id: {
       type: DataTypes.UUID,
-      primarKey: true,
+      primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
     startPage: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     endPage: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     time: {
