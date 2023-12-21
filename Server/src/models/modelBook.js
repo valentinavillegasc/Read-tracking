@@ -18,6 +18,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      pagesLeft: {
+        type: DataTypes.NUMBER,
+        allowNull: false,
+      },
       pages: {
         type: DataTypes.NUMBER,
         allowNull: false,
