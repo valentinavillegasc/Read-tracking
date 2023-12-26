@@ -19,7 +19,10 @@ export default function Login() {
             <input type="password" placeholder="************" />
           </div>
         </form>
-        <button>Login</button>
+        <Link to="/library">
+          <button>Login</button>
+        </Link>
+
         <div>
           <Link className={style.link}>
             <p>Forgot your password?</p>
