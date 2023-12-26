@@ -4,6 +4,7 @@ import Landing from "./views/Landing";
 import Login from "./views/Login";
 import Register from "./views/Register";
 import Home from "./views/Home";
+import Detail from "./views/Detail";
 function App() {
   return (
     <div className="App">
@@ -12,6 +13,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/library" element={<Home />} />
+        <Route path="/detail/:id" element={<Detail />} />
       </Routes>
     </div>
   );

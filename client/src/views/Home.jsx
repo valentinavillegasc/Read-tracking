@@ -6,18 +6,21 @@ import style from "./Styles/Home.module.css";
 
 const books = [
   {
+    id: 1,
     title: "It ends with us",
     author: "Colleen",
     rating: 4,
     cover: cover,
   },
   {
+    id: 2,
     title: "It starts with us",
     author: "Colleen",
     rating: 0,
     cover: cover,
   },
   {
+    id: 3,
     title: "Im glad my mom died",
     author: "Jennette",
     rating: 3,
