@@ -1,0 +1,24 @@
+.link {
+  text-decoration: none;
+}
+
+.book {
+  margin: 20px;
+
+  padding: 10px;
+  width: 200px;
+}
+
+.book img {
+  width: 200px;
+}
+
+.book h2 {
+  font-size: 1rem;
+  color: black;
+}
+
+.book h3 {
+  font-size: 0.8rem;
+  color: rgb(96, 94, 94);
+}
