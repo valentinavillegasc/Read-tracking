@@ -27,6 +27,7 @@ const updateUser = async (
 
     user.fullname = fullname || user.fullname;
     user.email = email || user.email;
+    user.password = newPassword || user.password;
 
     if (newPassword) {
       const hashedPassword = await bcrypt.hash(newPassword, 10);
