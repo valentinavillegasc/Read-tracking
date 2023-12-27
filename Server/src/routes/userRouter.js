@@ -3,6 +3,7 @@ const registerUser = require("../controllers/User/registerUser");
 const confirmEmail = require("../controllers/User/confirmEmail");
 const login = require("../controllers/User/Login");
 const getAllUsers = require("../controllers/User/getAllUsers");
+const getUserById = require("../controllers/User/getUserById");
 
 //! Register
 userRouter.post("/register", async (req, res) => {
@@ -48,4 +49,14 @@ userRouter.get("/", async (req, res) => {
   }
 });
 
+//! Get user by ID
+userRouter.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = await getUserById(id);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 module.exports = userRouter;
