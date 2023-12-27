@@ -1,6 +1,7 @@
 const userRouter = require("express").Router();
 const registerUser = require("../controllers/User/registerUser");
 const confirmEmail = require("../controllers/User/confirmEmail");
+const login = require("../controllers/User/Login");
 
 //! Register
 userRouter.post("/register", async (req, res) => {
@@ -19,6 +20,18 @@ userRouter.get("/confirm/:email/:token", async (req, res) => {
   try {
     const result = await confirmEmail(email, token);
     res.json(result);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+//!Login
+
+userRouter.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const result = await login(email, password);
+    res.status(200).json(result);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
