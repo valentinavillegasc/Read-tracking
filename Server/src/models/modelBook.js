@@ -54,6 +54,10 @@ module.exports = (sequelize) => {
         type: DataTypes.ARRAY(DataTypes.STRING),
         defaultValue: [],
       },
+      stars: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+      },
     },
     { timestamps: false }
   );

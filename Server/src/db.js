@@ -25,4 +25,4 @@ Tracker.belongsTo(Book, { through: "ReadingTrack", timestamps: false });
 User.belongsToMany(Tracker, { through: "UsersTrack", timestamps: false });
 Tracker.belongsTo(User, { through: "UsersTrack", timestamps: false });
 
-module.exports = { database };
+module.exports = { database, ...database.models };

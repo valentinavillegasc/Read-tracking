@@ -23,6 +23,14 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      confirmed: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
+      confirmationToken: {
+        type: DataTypes.STRING,
+        unique: true,
+      },
     },
     { timestamps: false }
   );
