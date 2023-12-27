@@ -8,7 +8,9 @@ const deleteUser = async (id) => {
     } else {
       return "deleted!";
     }
-  } catch (error) {}
+  } catch (error) {
+    throw error;
+  }
 };
 
 module.exports = deleteUser;
