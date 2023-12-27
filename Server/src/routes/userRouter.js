@@ -2,6 +2,7 @@ const userRouter = require("express").Router();
 const registerUser = require("../controllers/User/registerUser");
 const confirmEmail = require("../controllers/User/confirmEmail");
 const login = require("../controllers/User/Login");
+const getAllUsers = require("../controllers/User/getAllUsers");
 
 //! Register
 userRouter.post("/register", async (req, res) => {
@@ -32,6 +33,16 @@ userRouter.post("/login", async (req, res) => {
   try {
     const result = await login(email, password);
     res.status(200).json(result);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+//!Get all users
+userRouter.get("/", async (req, res) => {
+  try {
+    const users = await getAllUsers();
+    res.status(200).json(users);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
