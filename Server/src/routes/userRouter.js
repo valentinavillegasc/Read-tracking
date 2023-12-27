@@ -4,6 +4,7 @@ const confirmEmail = require("../controllers/User/confirmEmail");
 const login = require("../controllers/User/Login");
 const getAllUsers = require("../controllers/User/getAllUsers");
 const getUserById = require("../controllers/User/getUserById");
+const updateUser = require("../controllers/User/updateUser");
 
 //! Register
 userRouter.post("/register", async (req, res) => {
@@ -59,4 +60,24 @@ userRouter.get("/:id", async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 });
+
+//! Update user
+userRouter.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  const { fullname, email, currentPassword, newPassword } = req.body;
+
+  try {
+    const user = await updateUser(
+      id,
+      fullname,
+      email,
+      currentPassword,
+      newPassword
+    );
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 module.exports = userRouter;

@@ -1,5 +1,6 @@
 const { User } = require("../../db");
 const crypto = require("crypto");
+const bcrypt = require("bcrypt");
 const sendConfirmationEmail = require("../../config/mailConfig");
 
 const createNewUser = async (fullname, email, password) => {
@@ -17,11 +18,12 @@ const createNewUser = async (fullname, email, password) => {
     }
 
     const confirmationToken = crypto.randomBytes(20).toString("hex");
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const newRegister = await User.create({
       fullname,
       email,
-      password,
+      password: hashedPassword,
       confirmationToken,
     });
 
