@@ -5,6 +5,7 @@ const login = require("../controllers/User/Login");
 const getAllUsers = require("../controllers/User/getAllUsers");
 const getUserById = require("../controllers/User/getUserById");
 const updateUser = require("../controllers/User/updateUser");
+const deleteUser = require("../controllers/User/deleteUser");
 
 //! Register
 userRouter.post("/register", async (req, res) => {
@@ -80,4 +81,14 @@ userRouter.put("/:id", async (req, res) => {
   }
 });
 
+//! Delete user
+userRouter.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const user = deleteUser(id);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
 module.exports = userRouter;
