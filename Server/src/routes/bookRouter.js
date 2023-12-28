@@ -2,6 +2,7 @@ const bookRouter = require("express").Router();
 const uploadMiddleware = require("../handlers/uploadMiddleware");
 const createBook = require("../controllers/Book/createBook");
 const getBookById = require("../controllers/Book/getbookbyId");
+const deleteBook = require("../controllers/Book/deleteBook");
 
 //! Get book by ID
 bookRouter.get("/:id", async (req, res) => {
@@ -53,4 +54,15 @@ bookRouter.post("/", uploadMiddleware, async (req, res) => {
   }
 });
 
+//! Delete book
+bookRouter.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const book = await deleteBook(id);
+    res.status(200).json({ message: "Deleted", data: book });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 module.exports = bookRouter;
