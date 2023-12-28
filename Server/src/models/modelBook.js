@@ -9,6 +9,10 @@ module.exports = (sequelize) => {
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
       },
+      cover: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
 
       title: {
         type: DataTypes.STRING,
@@ -20,7 +24,7 @@ module.exports = (sequelize) => {
       },
       pagesLeft: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       pages: {
         type: DataTypes.INTEGER,
