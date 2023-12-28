@@ -1,5 +1,5 @@
 const { User, Book } = require("../../db");
-const cloudinary = require("cloudinary").v2;
+const cloudinary = require("../../config/cloudinary");
 const fs = require("fs").promises;
 const path = require("path");
 
@@ -19,10 +19,9 @@ const createBook = async (
   userId
 ) => {
   try {
-    if (!title || !author || !pages || !gender || !format)
-      throw new Error("Missing information");
+    if (!title || !author || !pages) throw new Error("Missing information");
 
-    const user = await User.findbyPk(userId);
+    const user = await User.findByPk(userId);
 
     if (!user) throw new Error("User not found");
 
@@ -30,7 +29,7 @@ const createBook = async (
     await fs.writeFile(tempFilePath, cover);
 
     const cloudinaryResponse = await cloudinary.uploader.upload(tempFilePath, {
-      folder: covers,
+      folder: "covers",
     });
 
     const newBook = await Book.create({
