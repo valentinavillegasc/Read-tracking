@@ -30,7 +30,7 @@ bookRouter.post("/", uploadMiddleware, async (req, res) => {
     review,
     quotes,
     stars,
-    userId,
+    UserId,
   } = req.body;
   const { buffer: cover } = req.file;
   try {
@@ -47,7 +47,7 @@ bookRouter.post("/", uploadMiddleware, async (req, res) => {
       review,
       quotes,
       stars,
-      userId
+      UserId
     );
     res.status(200).json({ message: "created", data: newBook });
   } catch (error) {

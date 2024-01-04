@@ -16,12 +16,12 @@ const createBook = async (
   review,
   quotes,
   stars,
-  userId
+  UserId
 ) => {
   try {
     if (!title || !author || !pages) throw new Error("Missing information");
 
-    const user = await User.findByPk(userId);
+    const user = await User.findByPk(UserId);
 
     if (!user) throw new Error("User not found");
 
@@ -45,7 +45,7 @@ const createBook = async (
       review,
       quotes,
       stars,
-      userId,
+      UserId,
     });
 
     await user.addBook(newBook);
