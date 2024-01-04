@@ -3,6 +3,7 @@ const app = express();
 const morgan = require("morgan");
 const userRouter = require("./routes/userRouter");
 const bookRouter = require("./routes/bookRouter");
+const trackerRouter = require("./routes/trackerRoute");
 //Middlewares
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -15,5 +16,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/user", userRouter);
 app.use("/book", bookRouter);
+app.use("/tracker", trackerRouter);
 
 module.exports = app;

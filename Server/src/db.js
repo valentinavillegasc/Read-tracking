@@ -19,9 +19,6 @@ const { Book, Tracker, User } = database.models;
 User.belongsToMany(Book, { through: "UsersBooks", timestamps: false });
 Book.belongsTo(User, { through: "UsersBooks", timestamps: false });
 
-Book.belongsToMany(Tracker, { through: "ReadingTrack", timestamps: false });
-Tracker.belongsTo(Book, { through: "ReadingTrack", timestamps: false });
-
 User.belongsToMany(Tracker, { through: "UsersTrack", timestamps: false });
 Tracker.belongsTo(User, { through: "UsersTrack", timestamps: false });
 
