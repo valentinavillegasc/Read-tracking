@@ -1,10 +1,10 @@
 const { User, Tracker } = require("../../db");
 const moment = require("moment");
 
-const createTrack = async (startPage, endPage, date, userId) => {
+const createTrack = async (startPage, endPage, date, UserId) => {
   try {
     // Verifica si hay información faltante
-    if (!startPage || !endPage || !date || !userId) {
+    if (!startPage || !endPage || !date || !UserId) {
       throw new Error("Missing information");
     }
     const formattedDate = moment(date, "YYYY-MM-DD", true);
@@ -17,7 +17,7 @@ const createTrack = async (startPage, endPage, date, userId) => {
       throw new Error("Invalid page range");
     }
 
-    const user = await User.findByPk(userId);
+    const user = await User.findByPk(UserId);
 
     if (!user) {
       throw new Error("User not found");
@@ -31,7 +31,7 @@ const createTrack = async (startPage, endPage, date, userId) => {
       startPage,
       endPage,
       date,
-      userId,
+      UserId,
       totalPagesRead,
     });
 
