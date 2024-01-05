@@ -1,7 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./Styles/Register.module.css";
 import { Link } from "react-router-dom";
+import axios from "../utils/axiosConf";
+import validation from "../validations";
+
 export default function Register() {
+  const [backendError, setBackendError] = useState();
+  const [form, setForm] = useState({
+    fullname: "",
+    email: "",
+    password: "",
+  });
+
+  const [error, setError] = useState({
+    fullname: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (event) => {
+    const property = event.target.name;
+    const value = event.target.value;
+    setForm({ ...form, [property]: value });
+    setError(validation({ ...form, [property]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.post("/user/register", form);
+    } catch (error) {
+      console.log("Error during form submission:", error);
+      console.log(form);
+    }
+  };
+
   return (
     <div className={style.register}>
       <div className={style.contenedorRegister}>
@@ -10,23 +43,54 @@ export default function Register() {
         <form className={style.form}>
           <div className={style.formGroup}>
             <label htmlFor="">Full Name</label>
-            <input type="name" placeholder="Pepito Perez" />
+            <input
+              type="fullname"
+              name="fullname"
+              placeholder="Pepito Perez"
+              onChange={handleChange}
+              value={form.fullname}
+            />
+            {error.fullname && (
+              <p className=" text-redError text-xs py-1 m-0">
+                {error.fullname}
+              </p>
+            )}
           </div>
           <div className={style.formGroup}>
             <label htmlFor="">Email</label>
-            <input type="email" placeholder="example@mail.co" />
+            <input
+              type="email"
+              name="email"
+              placeholder="example@mail.co"
+              onChange={handleChange}
+              value={form.email}
+            />
+            {error.email && (
+              <p className=" text-redError text-xs py-1 m-0">{error.email}</p>
+            )}
           </div>
 
           <div className={style.formGroup}>
             <label htmlFor="">Password</label>
-            <input type="password" placeholder="************" />
+            <input
+              type="password"
+              name="password"
+              placeholder="************"
+              onChange={handleChange}
+              value={form.password}
+            />
+            {error.password && (
+              <p className=" text-redError text-xs py-1 m-0">
+                {error.password}
+              </p>
+            )}
           </div>
-          <div className={style.formGroup}>
+          {/* <div className={style.formGroup}>
             <label htmlFor="">Repeat Password</label>
             <input type="password" placeholder="************" />
-          </div>
+          </div> */}
         </form>
-        <button>Register</button>
+        <button onClick={handleSubmit}>Register</button>
 
         <Link className={style.link} to="/login">
           <p>Already have an account?</p>
