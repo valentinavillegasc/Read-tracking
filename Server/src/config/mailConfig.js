@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
 
 const sendConfirmationEmail = (email, confirmationToken) => {
   // Construye el enlace de confirmación
-  const confirmationLink = `http://localhost:3001/confirm/${confirmationToken}`;
+  const confirmationLink = `http://localhost:3000/confirm/${confirmationToken}`;
 
   // Configura el contenido del correo electrónico
   const mailOptions = {
