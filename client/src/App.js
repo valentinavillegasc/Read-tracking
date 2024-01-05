@@ -6,6 +6,7 @@ import Register from "./views/Register";
 import Home from "./views/Home";
 import Detail from "./views/Detail";
 import CheckEmail from "./views/CheckEmail";
+import ConfirmEmail from "./views/ConfirmEmail";
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
         <Route path="/library" element={<Home />} />
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/checkemail" element={<CheckEmail />} />
+        <Route path="/confirm/:token" element={<ConfirmEmail />} />
       </Routes>
     </div>
   );
