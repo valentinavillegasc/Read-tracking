@@ -1,8 +1,8 @@
 const { User } = require("../../db");
 
-const confirmEmail = async (email, token) => {
+const confirmEmail = async (token) => {
   const user = await User.findOne({
-    where: { email, confirmationToken: token },
+    where: { confirmationToken: token },
   });
 
   if (user) {

@@ -19,10 +19,10 @@ userRouter.post("/register", async (req, res) => {
 });
 
 //!Confirm email
-userRouter.get("/confirm/:email/:token", async (req, res) => {
-  const { email, token } = req.params;
+userRouter.get("/confirm/:token", async (req, res) => {
+  const { token } = req.params;
   try {
-    const result = await confirmEmail(email, token);
+    const result = await confirmEmail(token);
     res.json(result);
   } catch (error) {
     res.status(400).json({ error: error.message });
