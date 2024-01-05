@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import style from "./Styles/Register.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "../utils/axiosConf";
 import validation from "../validations";
 
 export default function Register() {
-  const [backendError, setBackendError] = useState();
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     fullname: "",
     email: "",
@@ -29,6 +30,7 @@ export default function Register() {
     event.preventDefault();
     try {
       await axios.post("/user/register", form);
+      navigate("/checkemail");
     } catch (error) {
       console.log("Error during form submission:", error);
       console.log(form);
@@ -38,7 +40,7 @@ export default function Register() {
   return (
     <div className={style.register}>
       <div className={style.contenedorRegister}>
-        <h2>Read Trakcer</h2>
+        <h2>Read Tracker</h2>
         <h1>Register</h1>
         <form className={style.form}>
           <div className={style.formGroup}>

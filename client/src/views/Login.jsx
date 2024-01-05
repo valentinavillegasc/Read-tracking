@@ -6,7 +6,7 @@ export default function Login() {
   return (
     <div className={style.login}>
       <div className={style.contenedorLogin}>
-        <h2>Read Trakcer</h2>
+        <h2>Read Tracker</h2>
         <h1>Login</h1>
         <form className={style.form}>
           <div className={style.formGroup}>
