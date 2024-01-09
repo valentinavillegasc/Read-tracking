@@ -12,6 +12,10 @@ const login = async (email, password) => {
     if (!user) {
       throw new Error("User not found");
     }
+
+    if (user.confirmed === false) {
+      throw new Error("Please confirm your email");
+    }
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (isPasswordValid) {
       return {
