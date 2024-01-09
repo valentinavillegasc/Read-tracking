@@ -21,6 +21,9 @@ const login = async (email, password) => {
       return {
         message: "Login successful",
         userId: user.id,
+        fullname: user.fullname,
+        email: user.email,
+        password: user.password,
       };
     } else {
       throw new Error("Invalid password");
