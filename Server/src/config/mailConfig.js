@@ -15,10 +15,10 @@ const sendConfirmationEmail = (email, confirmationToken) => {
 
   // Configura el contenido del correo electrónico
   const mailOptions = {
-    from: MAIL,
+    from: `Read tracker <${MAIL}>`,
     to: email,
-    subject: "Confirmación de Correo Electrónico",
-    text: `Por favor, haz clic en el siguiente enlace para confirmar tu correo electrónico: ${confirmationLink}`,
+    subject: "Email confirmation",
+    text: `Please confirm your email with this link: ${confirmationLink}`,
   };
 
   // Envía el correo electrónico
