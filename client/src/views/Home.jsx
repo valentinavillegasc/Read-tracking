@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Books from "../components/Books";
-import cover from "../assets/book1.webp";
 import NavBar from "../components/NavBar";
 import style from "./Styles/Home.module.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,8 +10,12 @@ export default function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getBooks());
+    const id = localStorage.getItem("idSession");
+
+    dispatch(getBooks(id));
   }, [dispatch]);
+
+  console.log(books);
   return (
     <div>
       <NavBar />

@@ -12,7 +12,7 @@ export default function Books({ books }) {
           cover={book.cover}
           title={book.title}
           author={book.author}
-          rating={book.rating}
+          stars={book.stars}
         />
       ))}
     </div>

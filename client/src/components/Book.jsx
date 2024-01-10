@@ -9,7 +9,7 @@ export default function Book(props) {
         <img src={props.cover} alt="cover" />
         <h2>{props.title}</h2>
         <h3>{props.author}</h3>
-        <Rating readOnly={true} initialRating={props.rating} />
+        <Rating readOnly={true} initialRating={props.stars} />
       </div>
     </Link>
   );
