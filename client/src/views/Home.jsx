@@ -1,34 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Books from "../components/Books";
 import cover from "../assets/book1.webp";
 import NavBar from "../components/NavBar";
 import style from "./Styles/Home.module.css";
-
-const books = [
-  {
-    id: 1,
-    title: "It ends with us",
-    author: "Colleen",
-    rating: 4,
-    cover: cover,
-  },
-  {
-    id: 2,
-    title: "It starts with us",
-    author: "Colleen",
-    rating: 0,
-    cover: cover,
-  },
-  {
-    id: 3,
-    title: "Im glad my mom died",
-    author: "Jennette",
-    rating: 3,
-    cover: cover,
-  },
-];
+import { useDispatch, useSelector } from "react-redux";
+import { getBooks } from "../redux/actions";
 
 export default function Home() {
+  const books = useSelector((state) => state.allBooks);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBooks());
+  }, [dispatch]);
   return (
     <div>
       <NavBar />
