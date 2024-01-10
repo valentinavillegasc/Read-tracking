@@ -38,7 +38,6 @@ export default function Login() {
         localStorage.setItem("idSession", user.userId);
         localStorage.setItem("fullname", user.fullname);
         localStorage.setItem("email", user.email);
-        localStorage.setItem("password", user.password);
 
         localStorage.setItem(
           "userData",

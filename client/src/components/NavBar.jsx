@@ -28,7 +28,7 @@ export default function NavBar() {
             <Link to="/library" className={style.option}>
               Tracker
             </Link>
-            <Link>
+            <Link to="/profile">
               <img src={user} alt="Profile" className={style.profile} />
             </Link>
           </>

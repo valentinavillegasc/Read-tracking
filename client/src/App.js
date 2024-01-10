@@ -7,6 +7,7 @@ import Home from "./views/Home";
 import Detail from "./views/Detail";
 import CheckEmail from "./views/CheckEmail";
 import ConfirmEmail from "./views/ConfirmEmail";
+import UserProfile from "./views/UserProfile";
 function App() {
   return (
     <div className="App">
@@ -18,6 +19,7 @@ function App() {
         <Route path="/detail/:id" element={<Detail />} />
         <Route path="/checkemail" element={<CheckEmail />} />
         <Route path="/confirm/:token" element={<ConfirmEmail />} />
+        <Route path="/profile" element={<UserProfile />} />
       </Routes>
     </div>
   );
