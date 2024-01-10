@@ -6,6 +6,7 @@ const getAllUsers = require("../controllers/User/getAllUsers");
 const getUserById = require("../controllers/User/getUserById");
 const updateUser = require("../controllers/User/updateUser");
 const deleteUser = require("../controllers/User/deleteUser");
+const getBooksByUserId = require("../controllers/User/getBooksByUserId");
 
 //! Register
 userRouter.post("/register", async (req, res) => {
@@ -87,6 +88,17 @@ userRouter.delete("/:id", async (req, res) => {
   try {
     const user = deleteUser(id);
     res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+//! GET BOOKS OF THE ID
+userRouter.get("/books/:userId", async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const usersBooks = await getBooksByUserId(userId);
+    res.status(200).json(usersBooks);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
