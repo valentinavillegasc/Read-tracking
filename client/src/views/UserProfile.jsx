@@ -28,7 +28,7 @@ export default function UserProfile() {
       <NavBar />
       <h1>Profile</h1>
       <div>
-        <img src={user} alt="Pofile" />
+        <img src={user} alt="Profile" />
         <h2>Name</h2>
         <h2>email</h2>
         <button className={style.signOut} onClick={handleSignOut}>

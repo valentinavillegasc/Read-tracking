@@ -1,8 +1,13 @@
 import axios from "axios";
-import { GET_BOOKS_BY_USER_ID, GET_BOOK_BY_ID } from "./action-types";
+import {
+  GET_BOOKS_BY_USER_ID,
+  GET_BOOK_BY_ID,
+  USER_DETAIL,
+} from "./action-types";
 
 axios.defaults.baseURL = "http://localhost:3001";
 
+//Books
 export const getBooks = (id) => {
   return async function (dispatch) {
     try {
@@ -22,5 +27,16 @@ export const getBookById = (id) => {
     } catch (error) {
       console.log(error);
     }
+  };
+};
+
+//User
+
+export const getUserDetail = (id) => {
+  return async function (dispatch) {
+    try {
+      const userDetail = await axios.get(`/user/${id}`);
+      dispatch({ type: USER_DETAIL, payload: userDetail.data });
+    } catch (error) {}
   };
 };
