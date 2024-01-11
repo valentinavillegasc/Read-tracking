@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_BOOKS_BY_USER_ID } from "./action-types";
+import { GET_BOOKS_BY_USER_ID, GET_BOOK_BY_ID } from "./action-types";
 
 axios.defaults.baseURL = "http://localhost:3001";
 
@@ -8,6 +8,17 @@ export const getBooks = (id) => {
     try {
       const books = await axios.get(`/user/books/${id}`);
       dispatch({ type: GET_BOOKS_BY_USER_ID, payload: books.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const getBookById = (id) => {
+  return async function (dispatch) {
+    try {
+      const book = await axios.get(`/book/${id}`);
+      dispatch({ type: GET_BOOK_BY_ID, payload: book.data });
     } catch (error) {
       console.log(error);
     }
