@@ -1,35 +1,30 @@
-import React from "react";
-import cover from "../assets/book1.webp";
+import React, { useEffect } from "react";
 import NavBar from "../components/NavBar";
 import Rating from "../components/Rating";
 import openbook from "../assets/openedBook.png";
 import headphones from "../assets/headphones.png";
 import digital from "../assets/kindle.png";
 import style from "./Styles/Detail.module.css";
-
-const book = {
-  id: 1,
-  title: "It ends with us",
-  author: "Colleen",
-  rating: 4,
-  cover: cover,
-  genre: "Romance",
-  format: ["paper"],
-  sinopsis:
-    " Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius obcaecati iure a animi vitae saepe repellat illo eum dolorem Quisquam cupiditate sequi, rem sed omnis odit dolores illum impedit culpa",
-  review:
-    " Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius obcaecati iure a animi vitae saepe repellat illo eum dolorem Quisquam cupiditate sequi, rem sed omnis odit dolores illum impedit culpa",
-  quotes: ["Hola hola hola hola", "chao chao chao"],
-};
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { getBookById } from "../redux/actions";
 
 export default function Detail() {
+  const book = useSelector((state) => state.book);
+  const dispatch = useDispatch();
+  const params = useParams();
+
+  useEffect(() => {
+    dispatch(getBookById(params.id));
+  }, [dispatch, params.id]);
+
   return (
     <div>
       <NavBar />
       <section className={style.detail}>
         <div className={style.cover}>
           <img src={book.cover} alt="" />
-          <Rating readOnly={true} initialRating={book.rating} size="3rem" />
+          <Rating readOnly={true} initialRating={book.stars} size="3rem" />
         </div>
         <div>
           <div className={style.titles}>
@@ -52,7 +47,7 @@ export default function Detail() {
                   type="checkbox"
                   name="paper"
                   id="paperCheckbox"
-                  checked={book.format.includes("paper")}
+                  checked={book.format?.includes("paper")}
                   readOnly
                 />
               </div>
@@ -62,7 +57,7 @@ export default function Detail() {
                   type="checkbox"
                   name="audio"
                   id="audioCheckbox"
-                  checked={book.format.includes("audio")}
+                  checked={book.format?.includes("audio")}
                   readOnly
                 />
               </div>
@@ -72,7 +67,7 @@ export default function Detail() {
                   type="checkbox"
                   name="digital"
                   id="digitalCheckbox"
-                  checked={book.format.includes("digital")}
+                  checked={book.format?.includes("digital")}
                   readOnly
                 />
               </div>
@@ -81,30 +76,34 @@ export default function Detail() {
         </div>
       </section>
 
-      <section className={style.texts}>
-        {book.sinopsis && (
-          <div className={style.text}>
-            <h3>Sinopsis</h3>
-            <p>{book.sinopsis}</p>
-          </div>
-        )}
-        {book.review && (
-          <div className={style.text}>
-            <h3>Review</h3>
-            <p>{book.review}</p>
-          </div>
-        )}
-        {book.quotes && book.quotes.length > 0 && (
-          <div className={style.text}>
-            <h3>Quotes</h3>
-            {book.quotes.map((quote, index) => (
-              <p key={index} className={style.quote}>
-                {quote}
-              </p>
-            ))}
-          </div>
-        )}
-      </section>
+      {(book.sinopsis ||
+        book.review ||
+        (book.quotes && book.quotes.length > 0)) && (
+        <section className={style.texts}>
+          {book.sinopsis && (
+            <div className={style.text}>
+              <h3>Sinopsis</h3>
+              <p>{book.sinopsis}</p>
+            </div>
+          )}
+          {book.review && (
+            <div className={style.text}>
+              <h3>Review</h3>
+              <p>{book.review}</p>
+            </div>
+          )}
+          {book.quotes && book.quotes.length > 0 && (
+            <div className={style.text}>
+              <h3>Quotes</h3>
+              {book.quotes.map((quote, index) => (
+                <p key={index} className={style.quote}>
+                  {quote}
+                </p>
+              ))}
+            </div>
+          )}
+        </section>
+      )}
     </div>
   );
 }
