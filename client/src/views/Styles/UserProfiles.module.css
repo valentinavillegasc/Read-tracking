@@ -7,8 +7,11 @@
 .bar h2 {
   font-size: 2rem;
 }
-.bar p {
+.bar button {
   text-decoration: underline;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
 }
 .profileContainer {
   display: flex;
@@ -43,5 +46,32 @@
   height: 40px;
   margin: 20px;
   border: 0;
+  border-radius: 10px;
+}
+/* Edit */
+.editForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.save {
+  width: 100px;
+  height: 40px;
+  margin: 20px;
+  border: 0;
+  border-radius: 10px;
+}
+
+.editForm label {
+  margin-top: 10px;
+}
+
+.editForm input {
+  width: 255px;
+  height: 30px;
+  font-size: 1rem;
+  margin-top: 10px;
+  padding: 5px;
   border-radius: 10px;
 }
