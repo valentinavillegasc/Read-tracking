@@ -37,11 +37,13 @@ const updateBook = async (
       book.pages = pages || book.pages;
       book.startDate = startDate || book.startDate;
       book.endDate = endDate || book.endDate;
-      book.gender = gender || book.gender;
-      book.format = format || book.format;
+      book.gender = Array.isArray(gender) ? gender : book.gender;
+      book.format = Array.isArray(format) ? format : book.format;
+      book.quotes = Array.isArray(quotes) ? quotes : book.quotes;
+
       book.sinopsis = sinopsis || book.sinopsis;
       book.review = review || book.review;
-      book.quotes = quotes || book.quotes;
+
       book.stars = stars || book.stars;
 
       // Guardar los cambios en la base de datos
