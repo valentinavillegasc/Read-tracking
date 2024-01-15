@@ -112,7 +112,7 @@ export default function Detail() {
               <h3>Quotes</h3>
               {book.quotes.map((quote, index) => (
                 <p key={index} className={style.quote}>
-                  {quote}
+                  "{quote}"
                 </p>
               ))}
             </div>
