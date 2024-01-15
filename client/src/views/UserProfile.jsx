@@ -68,7 +68,8 @@ export default function UserProfile() {
     ) {
       try {
         await axios.put(`/user/${id}`, pendingChanges);
-
+        localStorage.setItem("fullname", pendingChanges.fullname);
+        localStorage.setItem("email", pendingChanges.email);
         localStorage.setItem(
           "userData",
           JSON.stringify({ ...userSession, ...pendingChanges })
@@ -91,7 +92,6 @@ export default function UserProfile() {
         {edit ? (
           <>
             <button onClick={handelSave}>Save</button>
-            <button onClick={handleCancel}>Cancel</button>
           </>
         ) : (
           <button onClick={handleEdit}>Edit</button>
@@ -126,6 +126,9 @@ export default function UserProfile() {
               {error && error.email && (
                 <p className=" text-redError text-xs py-1 m-0">{error.email}</p>
               )}
+              <button className={style.cancel} onClick={handleCancel}>
+                Cancel
+              </button>
             </form>
           ) : (
             <>

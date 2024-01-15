@@ -33,7 +33,8 @@ export default function Detail() {
           </div>
 
           <div className={style.info}>
-            <h3>Genre: {book.genre}</h3>
+            <h3>Gender: {book.gender}</h3>
+            <h3>Pages: {book.pages}</h3>
             <div className={style.dates}>
               <h3>Start date: </h3>
               <h3>End date:</h3>
