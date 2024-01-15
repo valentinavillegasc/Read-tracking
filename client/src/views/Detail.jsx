@@ -13,7 +13,7 @@ export default function Detail() {
   const book = useSelector((state) => state.book);
   const dispatch = useDispatch();
   const params = useParams();
-
+  console.log(book);
   useEffect(() => {
     dispatch(getBookById(params.id));
   }, [dispatch, params.id]);
@@ -24,7 +24,7 @@ export default function Detail() {
       <section className={style.detail}>
         <div className={style.cover}>
           <img src={book.cover} alt="" />
-          <Rating readOnly={true} initialRating={book.stars} size="3rem" />
+          <Rating readOnly={true} initialRating={book.stars} size="3.5rem" />
         </div>
         <div>
           <div className={style.titles}>
@@ -33,11 +33,25 @@ export default function Detail() {
           </div>
 
           <div className={style.info}>
-            <h3>Gender: {book.gender}</h3>
-            <h3>Pages: {book.pages}</h3>
+            <div>
+              <h3>Gender:</h3>
+              <p> {book.gender?.map((gender) => gender)}</p>
+            </div>
+            <div>
+              <h3>Pages: </h3>
+              <p>{book.pages}</p>
+            </div>
+
             <div className={style.dates}>
-              <h3>Start date: </h3>
-              <h3>End date:</h3>
+              <div>
+                <h3>Start date: </h3>
+                <p>{book.startDate}</p>
+              </div>
+              <div>
+                {" "}
+                <h3>End date:</h3>
+                <p>{book.endDate}</p>
+              </div>
             </div>
 
             <div className={style.formats}>
