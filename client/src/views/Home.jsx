@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar";
 import style from "./Styles/Home.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getBooks } from "../redux/actions";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const books = useSelector((state) => state.allBooks);
@@ -27,6 +28,9 @@ export default function Home() {
 
         <Books books={books} />
       </div>
+      <Link to="/newBook">
+        <button>+</button>
+      </Link>
     </div>
   );
 }
